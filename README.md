@@ -4,23 +4,21 @@ A relatively short single script project that can be used for timing bits of cod
 Example usage:
 ```python
 import timing
+import time
 
-timing.start("foo")
+timing.start("test1")
 time.sleep(0)
-timing.stop("foo")
+timing.stop("test1")
 
-timing.start("bar")
+timing.start("test2")
 time.sleep(2)
-timing.stop("bar")
+timing.stop("test2")
 
-timing.start("foobar")
+timing.start("test3")
 time.sleep(1)
-timing.stop("foobar")
+timing.stop("test3")
 
-timing.display(["foo", "bar", "foobar"])
+
+timing.display(["test1", "test2", "test3"])
+
 ```
-Output:
-
-1: foo (1.0013580322265625e-05)
-2: foobar (1.0010757446289062)
-3: bar (2.000251054763794)
