@@ -1,6 +1,10 @@
 def __init__():
     global time
     import time
+    global traceback
+    import traceback
+    global itemgetter
+    from operator import itemgetter
     global starttime, stoptime, times
     times = {}
     starttime = 0
@@ -20,8 +24,20 @@ def stop(name):
     stoptime = time.time()
     times[name] = stoptime - times[name]
 
+def execute(name, code):
+    if not isinstance(name, str):
+        raise TypeError(f"invalid type for name \"{name}\": {type(name)}")
+    if not isinstance(code, str):
+        raise TypeError(f"invalid type for code \"{name}\": {type(name)}")
+    start(name)
+    try:
+        exec(code)
+    except Exception as e:
+        raise e
+    stop(name)
+
+
 def display(values, descending=False):
-    from operator import itemgetter
     sortedtimes = {}
     if not isinstance(descending, bool):
         raise TypeError(f"invalid type for descending: {type(values)}")
