@@ -60,6 +60,14 @@ def display(values, descending=False):
 		
 		print(color + str(counter) + ": " + pos[0] + " (" + str(pos[1]) + ")" + "\u001b[0m")
 
+def timefunction(func):
+	def wrapper():
+		start(func.__name__)
+		func()
+		stop(func.__name__)
+	wrapper()
+	return wrapper
+
 def sumtimes(values):
 	if not isinstance(descending, bool):
 		raise TypeError(f"invalid type for descending: {type(values)}")
